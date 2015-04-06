@@ -22,44 +22,25 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     
 
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//    	
-//        http.csrf().disable().authorizeRequests()
-//        .anyRequest()
-//        .fullyAuthenticated();
-//        
-//         http.formLogin()
-//        .loginPage("/login")
-//        .failureUrl("/login?error")
-//        .permitAll();
-//         
-//         http.logout()
-//         .logoutUrl("/logout")
-//         .logoutSuccessUrl("/login")
-//         .permitAll();       
-//
-//    }
-    
-    
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-  	
-      http.csrf().disable().authorizeRequests()
-      .anyRequest()
-      .permitAll();
-      
-       http.formLogin()
-      .loginPage("/login")
-      .failureUrl("/login?error")
-      .permitAll();
-       
-       http.logout()
-       .logoutUrl("/logout")
-       .logoutSuccessUrl("/login")
-       .permitAll();       
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+    	
+        http.csrf().disable().authorizeRequests()
+        .anyRequest()
+        .fullyAuthenticated();
+        
+         http.formLogin()
+        .loginPage("/login")
+        .failureUrl("/login?error")
+        .permitAll();
+         
+         http.logout()
+         .logoutUrl("/logout")
+         .logoutSuccessUrl("/login")
+         .permitAll();       
 
-  }
+    }
+    
     
 
     @Override
