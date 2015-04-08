@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,7 +22,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
@@ -32,8 +32,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         
          http.formLogin()
          .loginPage("/login")
-         .failureUrl("/login?error")
-         .permitAll();
+         .failureHandler(
+                 (request, response, authentication) -> {
+                     response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                 })
+
+         .permitAll()
+         .and()
+         .httpBasic();
          
          http.logout()
          .logoutUrl("/logout")
