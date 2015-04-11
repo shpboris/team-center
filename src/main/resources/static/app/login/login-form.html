@@ -10,6 +10,7 @@
 	<style type="text/css">
 		.login-form {
 			max-width: 300px;
+			margin-top: 100px auto;
 			margin: 0 auto;
 		}
 		#inputUsername {
@@ -21,12 +22,15 @@
 			border-top-left-radius: 0;
   			border-top-right-radius: 0;
 		}
+		#createAccount {
+			text-align: center;
+		}
 	</style>
   </head>
   <body ng-app="postExample" ng-controller="PostController as postCtrl">
     <div class="container">
       <form class="login-form" ng-submit="postCtrl.postForm()">
-        <h2>Please sign in</h2>
+        <h2>Team Center</h2>
         <label for="inputUsername" class="sr-only">Username</label>
         <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model="postCtrl.inputData.username">
         <label for="inputPassword" class="sr-only">Password</label>
@@ -34,9 +38,14 @@
 		<br>
 		<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		
-      </form>
+        <br/>
+        <br/>
+        <!-- <a id="createAccount" class="btn btn-lg btn-primary btn-block" type="button" href="/team-center">Create account</a>	 -->	       	
+      </form>      
     </div> 
+     <div id="createAccount">    
+  		<a href="/team-center/app/account/create-account.html">Create account</a>
+	</div>
 	<script>
 	angular.module('postExample', [])
 	.controller('PostController', ['$scope', '$http', function($scope, $http) {

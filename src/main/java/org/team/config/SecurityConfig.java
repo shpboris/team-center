@@ -28,10 +28,12 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
         .authorizeRequests()
          .antMatchers("/users").permitAll()
+         .antMatchers("/app/account/*").permitAll()
          .anyRequest().fullyAuthenticated();
         
          http.formLogin()
          .loginPage("/login")
+         //.defaultSuccessUrl("/app/home/home.html")
          .failureHandler(
                  (request, response, authentication) -> {
                      response.setStatus(HttpStatus.UNAUTHORIZED.value());
