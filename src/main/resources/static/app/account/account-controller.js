@@ -4,7 +4,7 @@ angular.module('account', [])
 	  $scope.createAccount = function(){
 		    $http.post('../../users',$scope.newUser)
 		    .success(function(data, status, headers, config){
-		    	window.location.href = '/team-center';
+		    	window.location.href = 'welcome-new-account.html';
 		    })
 		    .error(function(data, status, headers, config){
 		        alert('Error creating user \n'+data.message);
